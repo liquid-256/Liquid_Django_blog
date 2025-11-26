@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}编辑个人信息{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>编辑个人信息</h2>
+        <hr>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.avatar.id_for_label }}" class="form-label">{{ form.avatar.label }}</label>
+                {{ form.avatar }}
+                {% if form.avatar.errors %}
+                    <div class="text-danger">{{ form.avatar.errors }}</div>
+                {% endif %}
+                {% if profile.avatar %}
+                    <div class="mt-2">
+                        <p>当前头像：</p>
+                        <img src="{{ profile.avatar.url }}" alt="当前头像" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
+                    </div>
+                {% endif %}
+                <small class="form-text text-muted">支持 JPG、PNG 格式，建议尺寸 200x200 像素</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.bio.id_for_label }}" class="form-label">{{ form.bio.label }}</label>
+                {{ form.bio }}
+                {% if form.bio.errors %}
+                    <div class="text-danger">{{ form.bio.errors }}</div>
+                {% endif %}
+                <small class="form-text text-muted">最多500个字符</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.website.id_for_label }}" class="form-label">{{ form.website.label }}</label>
+                {{ form.website }}
+                {% if form.website.errors %}
+                    <div class="text-danger">{{ form.website.errors }}</div>
+                {% endif %}
+                <small class="form-text text-muted">例如：https://example.com</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.location.id_for_label }}" class="form-label">{{ form.location.label }}</label>
+                {{ form.location }}
+                {% if form.location.errors %}
+                    <div class="text-danger">{{ form.location.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.birthday.id_for_label }}" class="form-label">{{ form.birthday.label }}</label>
+                {{ form.birthday }}
+                {% if form.birthday.errors %}
+                    <div class="text-danger">{{ form.birthday.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">保存</button>
+                <a href="{% url 'liauth:profile_detail' %}" class="btn btn-secondary">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

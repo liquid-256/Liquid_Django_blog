@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}首页{% endblock %}
+
+{% block main %}
+    <h1>博客列表</h1>
+    {% if search_query %}
+        <p class="text-muted">搜索 “{{ search_query|escape }}” 的结果：</p>
+    {% endif %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for blog in blogs %}
+        <div class="col">
+            <div class="card">
+               <div class="card-header">
+                   <a href="{% url 'blog:blog_detail' blog_id=blog.id %}">{{ blog.title|escape }}</a>
+               </div>
+               <div class="card-body" style="height: 100px">
+                  <p class="card-text">{{ blog.content|striptags|truncatechars:200 }}</p>
+               </div>
+               <div class="card-footer text-body-secondary d-flex justify-content-between">
+                   <div>
+                       {% if blog.author.profile and blog.author.profile.avatar %}
+                           <img src="{{ blog.author.profile.avatar.url }}" class="rounded-circle" width="30" height="30" alt="" style="object-fit: cover;">
+                       {% else %}
+                           <img src="{% static 'image/avatar.webp' %}" class="rounded-circle" width="30" height="30" alt="">
+                       {% endif %}
+                       <a href="{% url 'liauth:profile_detail_by_id' user_id=blog.author.id %}" class="text-decoration-none text-body-secondary">{{ blog.author.username|escape }}</a>
+                   </div>
+                   <div>发布时间: {{ blog.pub_time|date:"Y年m月d日 H时i分" }}</div>
+               </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    {% include 'components/pagination.html' with page_obj=page_obj %}
+{% endblock %}

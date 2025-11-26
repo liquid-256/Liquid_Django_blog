@@ -1,0 +1,6 @@
+django==5.0.3        # Web 框架
+mysqlclient==2.2.4   # MySQL 数据库驱动
+python-decouple==3.8 # 环境变量与配置管理
+Pillow==11.0.0       # 头像等图片处理（ImageField 依赖）
+gunicorn==21.2.0     # Unix 生产环境 WSGI 服务（Windows 上不运行，仅部署用）
+
