@@ -27,8 +27,8 @@
 ## 项目结构
 
 ```text
-a_Django_blog/
-├─ a_Django_blog/
+Liquid_Django_blog/
+├─ Django_blog/
 │  ├─ settings/
 │  │  ├─ base.py
 │  │  ├─ dev.py
@@ -83,7 +83,7 @@ cp .env.example .env
 SECRET_KEY=your-secret-key
 DEBUG=True
 
-DB_NAME=a_django_blog
+DB_NAME=django_blog
 DB_USER=root
 DB_PASSWORD=123456
 DB_HOST=127.0.0.1
@@ -132,10 +132,10 @@ DEFAULT_FROM_EMAIL=your-email@qq.com
 
 ```bash
 # 设置环境变量指向生产配置
-export DJANGO_SETTINGS_MODULE=a_Django_blog.settings.prod
+export DJANGO_SETTINGS_MODULE=Django_blog.settings.prod
 
 # 使用 Gunicorn 启动
-gunicorn -c gunicorn_conf.py a_Django_blog.wsgi:application
+gunicorn -c gunicorn_conf.py Django_blog.wsgi:application
 ```
 
 最后使用 Nginx 反向代理到 `127.0.0.1:8000` 即可。

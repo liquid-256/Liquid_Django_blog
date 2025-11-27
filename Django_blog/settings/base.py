@@ -1,5 +1,5 @@
 """
-Django base settings for a_Django_blog project.
+Django base settings for Django_blog project.
 
 该文件包含开发和生产环境共用的配置，环境相关配置放在 dev.py / prod.py 中。
 敏感信息均通过 python-decouple 从环境变量或 .env 中读取。
@@ -38,7 +38,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "a_Django_blog.urls"
+ROOT_URLCONF = "Django_blog.urls"
 
 TEMPLATES = [
     {
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "a_Django_blog.wsgi.application"
+WSGI_APPLICATION = "Django_blog.wsgi.application"
 
 
 # Database

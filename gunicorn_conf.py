@@ -3,10 +3,10 @@ Gunicorn 配置文件（仅用于 Linux / 服务器环境）。
 
 使用方式（示例）：
 
-    gunicorn -c gunicorn_conf.py a_Django_blog.wsgi:application
+    gunicorn -c gunicorn_conf.py Django_blog.wsgi:application
 
 在启动前请确保已设置：
-    export DJANGO_SETTINGS_MODULE=a_Django_blog.settings.prod
+    export DJANGO_SETTINGS_MODULE=Django_blog.settings.prod
     export DJANGO_SECRET_KEY='your-secret-key'
 """
 
@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Django WSGI 模块
-wsgi_app = "a_Django_blog.wsgi:application"
+wsgi_app = "Django_blog.wsgi:application"
 
 # 绑定地址（建议在宝塔 / Nginx 中做反向代理）
 bind = "0.0.0.0:8000"

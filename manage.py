@@ -7,8 +7,8 @@ import sys
 def main():
     """Run administrative tasks."""
     # 默认使用开发环境配置，如需生产环境请在进程管理器或 WSGI/ASGI 层设置：
-    #   DJANGO_SETTINGS_MODULE=a_Django_blog.settings.prod
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "a_Django_blog.settings.dev")
+    #   DJANGO_SETTINGS_MODULE=Django_blog.settings.prod
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Django_blog.settings.dev")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
